@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import socketIOClient from "socket.io-client";
+import React, { Component } from "react"
+import socketIOClient from "socket.io-client"
+import OrderRow from './OrderRow'
 
 class OrderTable extends Component {
   constructor() {
@@ -7,19 +8,20 @@ class OrderTable extends Component {
     this.state = {
       response: false,
       endpoint: "http://127.0.0.1:8080",
-      orders: {}
+      orders: {},
+      test: "h"
     };
   }
   componentDidMount() {
     const { endpoint } = this.state
     const socket = socketIOClient(endpoint)
-    socket.on(this.props.type, data => this.setState({ orders: data }))
+    socket.on("bids", data => this.setState({ test: data }))
+    console.log(this.state.test)
   }
   render() {
-    // const orderList = this.state.orders && this.state.orders.map((order) => {
-    //   price = Object.keys(order)
-    //   return <OrderRow price={price} volumes={order[price]} />
-    // })
+    const orderList = this.state.orders && Object.keys(this.state.orders).map((price) => {
+      return <OrderRow price={price} volumes={this.state.orders[price]} />
+    })
 
     return (
     <table class="table table-sm">
@@ -36,12 +38,11 @@ class OrderTable extends Component {
         </tr>
       </thead>
       <tbody>
-
+        {orderList}
       </tbody>
      </table>
     )
-
   }
 }
 
-export default OrderTable;
+export default OrderTable

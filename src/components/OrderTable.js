@@ -9,14 +9,12 @@ class OrderTable extends Component {
       response: false,
       endpoint: "http://127.0.0.1:8080",
       orders: {},
-      test: "h"
     };
   }
   componentDidMount() {
     const { endpoint } = this.state
     const socket = socketIOClient(endpoint)
-    socket.on("bids", data => this.setState({ test: data }))
-    console.log(this.state.test)
+    socket.on("bids", data => this .setState({ orders: data }))
   }
   render() {
     const orderList = this.state.orders && Object.keys(this.state.orders).map((price) => {

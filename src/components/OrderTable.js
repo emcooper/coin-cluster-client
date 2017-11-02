@@ -10,7 +10,7 @@ class OrderTable extends Component {
   }
   render() {
     const orderList = this.props.orders && Object.keys(this.props.orders).map((price) => {
-      return <OrderRow price={price} volumes={this.props.orders[price]} />
+      return <OrderRow price={price} volumes={this.props.orders[price]["volumes"]} highlight={this.props.orders[price]["highlight"]} />
     })
 
     const exchangesList = this.state.exchanges.map((exchange) => {

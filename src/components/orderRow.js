@@ -11,7 +11,7 @@ class OrderRow extends Component {
     })
 
     return(
-    <tr>
+    <tr class={this.props.highlight}>
       <th scope="row">{this.props.price}</th>
       {volumes}
       <td>{total}</td>

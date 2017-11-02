@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import socketIOClient from "socket.io-client"
 import OrderRow from './OrderRow'
 
+
 class OrderTable extends Component {
   constructor() {
     super()
@@ -9,16 +10,23 @@ class OrderTable extends Component {
       response: false,
       endpoint: "http://127.0.0.1:8080",
       orders: {},
+      exchanges: ["Bittrex", "Poloniex"]
     };
   }
+
   componentDidMount() {
     const { endpoint } = this.state
     const socket = socketIOClient(endpoint)
-    socket.on("bids", data => this .setState({ orders: data }))
+    socket.on("bids", data => this.setState({ orders: data }))
   }
   render() {
     const orderList = this.state.orders && Object.keys(this.state.orders).map((price) => {
       return <OrderRow price={price} volumes={this.state.orders[price]} />
+    })
+
+
+    const exchangesList = this.state.exchanges.map((exchange) => {
+      return <th scope="col">{exchange}</th>
     })
 
     return (
@@ -30,8 +38,7 @@ class OrderTable extends Component {
         </tr>
         <tr>
           <th scope="col">Price (BTC)</th>
-          <th scope="col">Bittrex</th>
-          <th scope="col">Poloniex</th>
+          {exchangesList}
           <th scope="col">Total</th>
         </tr>
       </thead>

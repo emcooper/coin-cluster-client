@@ -5,7 +5,7 @@ import OrderTable from './components/OrderTable'
 class App extends Component {
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
+      <div>
       <div class="container">
         <h1 class = "text-center">Combined Order Books</h1><br></br>
         <h3 class = "text-center">BTC-ETH</h3><br></br>

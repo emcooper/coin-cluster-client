@@ -14,14 +14,16 @@ class OrderTable extends Component {
     };
   }
 
-  componentDidMount() {
-    const { endpoint } = this.state
-    const socket = socketIOClient(endpoint)
-    socket.on("bids", data => this.setState({ orders: data }))
-  }
+  // componentDidMount() {
+  //   const { endpoint } = this.state
+  //   const socket = socketIOClient(endpoint)
+  //   let index = 0
+  //   if(this.props.type === "asks"){index = 1}
+  //   socket.on("orders", data => this.setState({ orders: data[index] }))
+  // }
   render() {
-    const orderList = this.state.orders && Object.keys(this.state.orders).map((price) => {
-      return <OrderRow price={price} volumes={this.state.orders[price]} />
+    const orderList = this.props.orders && Object.keys(this.props.orders).map((price) => {
+      return <OrderRow price={price} volumes={this.props.orders[price]} />
     })
 
 

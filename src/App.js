@@ -1,8 +1,22 @@
 import React, { Component } from "react"
-
+import socketIOClient from "socket.io-client"
 import OrderTable from './components/OrderTable'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      response: false,
+      endpoint: "http://127.0.0.1:8080",
+      orders: {},
+      exchanges: ["Bittrex", "Poloniex"]
+    }
+  }
+  componentDidMount() {
+    const { endpoint } = this.state
+    const socket = socketIOClient(endpoint)
+    socket.on("orders", data => this.setState({ orders: data }))
+  }
   render() {
     return (
       <div>
@@ -17,12 +31,13 @@ class App extends Component {
         <div class="row">
           <div class="col-md-6">
             <h3 class = "text-center">Bids</h3>
-            <OrderTable type="bids"/>
+            <OrderTable type="bids" orders={this.state.orders[0]}/>
 
           </div>
           <div class="col-md-6">
             <h3 class = "text-center">Asks</h3>
-            <div id='asks'></div>
+            <OrderTable type="asks" orders={this.state.orders[1]}/>
+
           </div>
         </div>
       </div>

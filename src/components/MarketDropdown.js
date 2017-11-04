@@ -14,7 +14,7 @@ class MarketDropdown extends Component {
   render(){
 
     return(
-      <select onChange={this.handleChange}>
+      <select class="btn btn-primary btn-lg" onChange={this.handleChange}>
         <option value="ETH">BTC-ETH</option>
         <option value="LTC">BTC-LTC</option>
         <option value="DOGE">BTC-DOGE</option>

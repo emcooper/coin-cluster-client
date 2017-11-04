@@ -8,7 +8,6 @@ class MarketDropdown extends Component {
 
   handleChange(event) {
     this.props.onClick(event.target.value)
-    console.log(event.target.value)
   }
 
   render(){

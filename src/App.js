@@ -17,28 +17,24 @@ class App extends Component {
   renderMarketDropdown(){
     return (
       <MarketDropdown
-        value={this.state.market}
         onClick={(market) => this.handleClick(market)}
       />
     )
   }
 
-  handleClick(newMarket){
-    console.log("in App market = " + newMarket)
-    this.setState({market: newMarket})
-    this.newSocketConnection(newMarket)
-    console.log("in handleClick state = " + newMarket)
+  handleClick(market){
+    this.newSocketConnection(market)
   }
 
-  newSocketConnection(newMarket){
-    console.log("in newSocketConnection state = " + this.state.market)
-    const socket = socketIOClient(endpoint, {query:`market=${newMarket}`})
+  newSocketConnection(market){
+    const socket = socketIOClient(endpoint, {query:`market=${market}`})
     socket.on("orders", data => this.setState({ orders: data }))
   }
 
   componentDidMount() {
     this.newSocketConnection("ETH")
   }
+
   render() {
     return (
       <div>

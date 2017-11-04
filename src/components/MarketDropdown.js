@@ -8,12 +8,13 @@ class MarketDropdown extends Component {
 
   handleChange(event) {
     this.props.onClick(event.target.value)
+    console.log(event.target.value)
   }
 
   render(){
 
     return(
-      <select value={this.props.value} onChange={this.handleChange}>
+      <select onChange={this.handleChange}>
         <option value="ETH">BTC-ETH</option>
         <option value="LTC">BTC-LTC</option>
         <option value="DOGE">BTC-DOGE</option>

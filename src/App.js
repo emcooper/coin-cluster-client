@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       response: false,
       orders: {},
+      market: "ETH"
     }
   }
 
@@ -24,6 +25,7 @@ class App extends Component {
 
   handleClick(market){
     this.newSocketConnection(market)
+    this.setState({market: market})
   }
 
   newSocketConnection(market){
@@ -38,10 +40,9 @@ class App extends Component {
   render() {
     return (
       <div>
-      <div class="container">
-        <h1 class = "text-center">Combined Order Books</h1><br></br>
-        <h3 class = "text-center">BTC-ETH</h3><br></br>
-        {this.renderMarketDropdown()}
+      <div class="container text-center">
+        <h1>BTC-{this.state.market} Combined Order Books</h1><br></br>
+        <h5>Select Market: {this.renderMarketDropdown()}</h5><br></br>
         <div class="col-md-6 offset-md-3">
         <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
       </div>

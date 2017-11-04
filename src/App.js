@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       response: false,
       orders: {},
-      market: "ETH",
     }
   }
 
@@ -24,13 +23,21 @@ class App extends Component {
     )
   }
 
-  handleClick(market){
-    this.setState({market: market})
+  handleClick(newMarket){
+    console.log("in App market = " + newMarket)
+    this.setState({market: newMarket})
+    this.newSocketConnection(newMarket)
+    console.log("in handleClick state = " + newMarket)
+  }
+
+  newSocketConnection(newMarket){
+    console.log("in newSocketConnection state = " + this.state.market)
+    const socket = socketIOClient(endpoint, {query:`market=${newMarket}`})
+    socket.on("orders", data => this.setState({ orders: data }))
   }
 
   componentDidMount() {
-    const socket = socketIOClient(endpoint, {query:"market=DOGE"})
-    socket.on("orders", data => this.setState({ orders: data }))
+    this.newSocketConnection("ETH")
   }
   render() {
     return (

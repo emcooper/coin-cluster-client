@@ -42,9 +42,9 @@ class App extends Component {
   render() {
     return (
       <div class="container-fluid text-center">
-        <OrderAreaChart />
         <h1>BTC-{this.state.market} Combined Order Books</h1><br></br>
         <h5>Select Market: {this.renderMarketDropdown()}</h5><br></br>
+        <OrderAreaChart orders={this.state.orders}/>
         <div class="col-md-6 offset-md-3">
           <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
         </div>

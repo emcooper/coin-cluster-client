@@ -14,7 +14,7 @@ class OrderTable extends Component {
 
 
     return (
-    <table class="table table-sm">
+    <table class="table table-sm table-responsive-md">
       <thead>
         <tr>
           <th scope="col" class="no-top-border"></th>

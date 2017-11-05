@@ -1,8 +1,4 @@
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 th:first-letter {
   text-transform: capitalize
@@ -10,4 +6,12 @@ th:first-letter {
 
 th.no-top-border {
   border-top: 0
+}
+
+.container-fluid {
+  width: 90%
+}
+
+.table td, .table th {
+  font-size: 12px;
 }

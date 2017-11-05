@@ -2,12 +2,6 @@ import React, { Component } from "react"
 import OrderRow from './OrderRow'
 
 class OrderTable extends Component {
-  constructor() {
-    super()
-    this.state = {
-      exchanges: ["Bittrex", "Poloniex"]
-    };
-  }
   render() {
     let firstPrice = this.props.orders && Object.keys(this.props.orders)[0]
     const exchangesList = this.props.orders && Object.keys(this.props.orders[firstPrice]["volumes"]).map((exchangeName) => {

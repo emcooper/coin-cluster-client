@@ -5,14 +5,15 @@ class OrderAreaChart extends Component {
 
   render(){
     const data = [
-      {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-      {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-      {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-      {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-      {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-      {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-]
+      {price: .03, bid: 4000, ask: 0},
+      {price: .04, bid: 3000, ask: 0},
+      {price: .05, bid: 3000, ask: 0},
+      {price: .06, bid: 2000, ask: 0},
+      {price: .07, bid: 9000, ask: 9908},
+      {price: .08, bid: 0, ask: 4800},
+      {price: .09, ask: 3800},
+      {price: .1, ask: 4300},
+];
 
     return(
 
@@ -28,12 +29,12 @@ class OrderAreaChart extends Component {
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
+        <XAxis dataKey="price" type="number" domain={['dataMin', 'dataMax']}/>
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+        <Area type="monotone" dataKey="ask" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area type="monotone" dataKey="bid" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
       </AreaChart>
     )
   }

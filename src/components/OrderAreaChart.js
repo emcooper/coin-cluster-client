@@ -3,18 +3,43 @@ import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts'
 
 class OrderAreaChart extends Component {
 
+
   render(){
-    const data = [
+    let data = []
+
+    if(this.props.orders[0]){
+      let bids = this.props.orders[0]
+      Object.keys(bids).forEach(function(price){
+        let totalVol = 0
+        // console.log(bids[price].volumes)
+        Object.keys(bids[price].volumes).forEach((exchangeName) => {
+          totalVol += bids[price].volumes[exchangeName]
+        })
+        data.push({price: + price, bid: totalVol, ask: 0})
+      })
+
+      let asks = this.props.orders[0]
+      Object.keys(asks).forEach(function(price){
+        let totalVol = 0
+        // console.log(asks[price].volumes)
+        Object.keys(asks[price].volumes).forEach((exchangeName) => {
+          totalVol += asks[price].volumes[exchangeName]
+        })
+        data.push({price: + price, ask: totalVol, bid: 0})
+      })
+    }
+
+    const data1 = [
       {price: .03, bid: 4000, ask: 0},
       {price: .04, bid: 3000, ask: 0},
       {price: .05, bid: 3000, ask: 0},
       {price: .06, bid: 2000, ask: 0},
-      {price: .07, bid: 9000, ask: 9908},
+      {price: .075, bid: 9000},
       {price: .08, bid: 0, ask: 4800},
       {price: .09, ask: 3800},
       {price: .1, ask: 4300},
-];
-
+    ]
+    console.log(data)
     return(
 
       <AreaChart width={730} height={250} data={data}
@@ -33,8 +58,8 @@ class OrderAreaChart extends Component {
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Area type="monotone" dataKey="ask" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        <Area type="monotone" dataKey="bid" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+        <Area type="monotone" dataKey="ask" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" connectNulls={true} />
+        <Area type="monotone" dataKey="bid" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" connectNulls={true} />
       </AreaChart>
     )
   }

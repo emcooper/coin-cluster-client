@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import socketIOClient from "socket.io-client"
 import OrderTable from './components/OrderTable'
 import MarketDropdown from './components/MarketDropdown'
+import './App.css'
 
 const endpoint = "http://127.0.0.1:8080"
 

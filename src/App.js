@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import socketIOClient from "socket.io-client"
 import OrderTable from './components/OrderTable'
 import MarketDropdown from './components/MarketDropdown'
+import './App.css'
 
 const endpoint = "http://127.0.0.1:8080"
 
@@ -39,13 +40,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-      <div class="container text-center">
+      <div class="container-fluid text-center">
         <h1>BTC-{this.state.market} Combined Order Books</h1><br></br>
         <h5>Select Market: {this.renderMarketDropdown()}</h5><br></br>
         <div class="col-md-6 offset-md-3">
-        <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
-      </div>
+          <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
+        </div>
         <div class="row">
           <div class="col-md-6">
             <h3 class = "text-center">Bids</h3>
@@ -57,7 +57,6 @@ class App extends Component {
           </div>
         </div>
       </div>
-    </div>
     )
   }
 }

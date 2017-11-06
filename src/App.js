@@ -47,7 +47,7 @@ class App extends Component {
         <div class="col-md-10 offset-md-1 text-center">
           <OrderAreaChart orders={this.state.orders} market={this.state.market}/>
         </div>
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-6 offset-md-3"><br></br><br></br>
           <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
         </div>
         <div class="row">

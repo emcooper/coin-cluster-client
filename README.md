@@ -7,7 +7,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Node.js (https://nodejs.org/en/)
+[Node.js](https://nodejs.org/en/)
 
 ### Installing
 
@@ -19,7 +19,7 @@ Node.js (https://nodejs.org/en/)
 npm install
 ```
 
-3. Clone the server-side websocket app (https://github.com/emcooper/coin-cluster)
+3. Clone the [server-side websocket app](https://github.com/emcooper/coin-cluster)
 
 4. Install node packages on the websocket app. 
 

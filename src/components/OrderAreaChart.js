@@ -11,23 +11,25 @@ class OrderAreaChart extends Component {
       let bids = this.props.orders[0]
       Object.keys(bids).forEach(function(price){
         let totalVol = 0
-        // console.log(bids[price].volumes)
         Object.keys(bids[price].volumes).forEach((exchangeName) => {
           totalVol += bids[price].volumes[exchangeName]
         })
-        data.push({price: + price, bid: totalVol, ask: 0})
+        data.push({price: + price, bid: totalVol})
       })
 
-      let asks = this.props.orders[0]
+      let asks = this.props.orders[1]
       Object.keys(asks).forEach(function(price){
         let totalVol = 0
-        // console.log(asks[price].volumes)
         Object.keys(asks[price].volumes).forEach((exchangeName) => {
           totalVol += asks[price].volumes[exchangeName]
         })
-        data.push({price: + price, ask: totalVol, bid: 0})
+        data.push({price: + price, ask: totalVol})
       })
     }
+
+    data.sort(function (a, b) {
+      return a.price - b.price
+    })
 
     const data1 = [
       {price: .03, bid: 4000, ask: 0},
@@ -47,15 +49,15 @@ class OrderAreaChart extends Component {
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+            <stop offset="95%" stopColor="#8884d8" stopOpacity={0.5}/>
           </linearGradient>
           <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+            <stop offset="95%" stopColor="#82ca9d" stopOpacity={.5}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="price" type="number" domain={['dataMin', 'dataMax']}/>
-        <YAxis />
+        <XAxis dataKey="price" type="number" allowDataOverflow={true} domain={[.039, .041]} />
+        <YAxis allowDataOverflow={true} domain={[0, 100]}/>
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Area type="monotone" dataKey="ask" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" connectNulls={true} />

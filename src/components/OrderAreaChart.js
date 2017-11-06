@@ -10,7 +10,7 @@ class OrderAreaChart extends Component {
   render(){
     let data =[]
 
-    if(this.props.orders[0]){
+    if(this.props.orders[0] && this.props.market === 'ETH'){
       let bids = this.props.orders[0]
       let asks = this.props.orders[1]
       let min = + this.roundIncrement(Object.keys(bids).slice(-1)[0])
@@ -42,6 +42,31 @@ class OrderAreaChart extends Component {
       data = Object.keys(smoothedData).map(function(price){
         return {price: +price, bid: smoothedData[price]['bid'], ask: smoothedData[price]['ask']}
       })
+    } else {
+        if(this.props.orders[0]){
+        let bids = this.props.orders[0]
+        Object.keys(bids).forEach(function(price){
+          let totalVol = 0
+          Object.keys(bids[price].volumes).forEach((exchangeName) => {
+            totalVol += bids[price].volumes[exchangeName]
+          })
+          data.push({price: + price, bid: totalVol})
+        })
+
+        let asks = this.props.orders[1]
+        Object.keys(asks).forEach(function(price){
+          let totalVol = 0
+          Object.keys(asks[price].volumes).forEach((exchangeName) => {
+            totalVol += asks[price].volumes[exchangeName]
+          })
+          data.push({price: + price, ask: totalVol})
+        })
+
+
+      data.sort(function (a, b) {
+        return a.price - b.price
+      })
+      }
     }
 
     return(

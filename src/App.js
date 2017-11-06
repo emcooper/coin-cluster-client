@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import socketIOClient from "socket.io-client"
 import OrderTable from './components/OrderTable'
 import MarketDropdown from './components/MarketDropdown'
+import OrderAreaChart from './components/OrderAreaChart'
 import './App.css'
 
 const endpoint = "http://127.0.0.1:8080"
@@ -43,7 +44,10 @@ class App extends Component {
       <div class="container-fluid text-center">
         <h1>BTC-{this.state.market} Combined Order Books</h1><br></br>
         <h5>Select Market: {this.renderMarketDropdown()}</h5><br></br>
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-10 offset-md-1 text-center">
+          <OrderAreaChart orders={this.state.orders} market={this.state.market}/>
+        </div>
+        <div class="col-md-6 offset-md-3"><br></br><br></br>
           <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
         </div>
         <div class="row">

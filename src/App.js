@@ -44,7 +44,9 @@ class App extends Component {
       <div class="container-fluid text-center">
         <h1>BTC-{this.state.market} Combined Order Books</h1><br></br>
         <h5>Select Market: {this.renderMarketDropdown()}</h5><br></br>
-        <OrderAreaChart orders={this.state.orders}/>
+        <div class="col-md-10 offset-md-1 text-center">
+          <OrderAreaChart orders={this.state.orders} market={this.state.orders}/>
+        </div>
         <div class="col-md-6 offset-md-3">
           <h5 class = "text-center font-italic bg-warning">Highlighting Represents Overlapping Asks/Bids</h5><br></br>
         </div>

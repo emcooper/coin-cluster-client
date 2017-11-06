@@ -16,29 +16,26 @@ class OrderAreaChart extends Component {
       let asks = this.props.orders[1]
       let min = + this.roundIncrement(Object.keys(bids).slice(-1)[0])
       let max = + Object.keys(asks).slice(-1)[0]
+      let increment = (max - min) /20
+      console.log(increment)
       let smoothedData = {}
-      // for(let i = min; i <= max; i += .0005){
-      //   smoothedData[i] = {'bid': 0, 'ask': 0}
-      // }
       let i = min
       while(i <= max + .0005){
         smoothedData[this.roundIncrement(i)] = {'bid': 0, 'ask': 0}
         i = +this.roundIncrement(i) + .0005
       }
-
-      Object.keys(bids).forEach(function(price){
+      Object.keys(bids).forEach((price) => {
         let totalVol = 0
-        let roundedPx = +(Math.ceil(price*2000)/2000).toFixed(4)
+        let roundedPx = this.roundIncrement(price)
         Object.keys(bids[price].volumes).forEach((exchangeName) => {
           totalVol += bids[price].volumes[exchangeName]
         })
         smoothedData[roundedPx]['bid'] += totalVol
       })
 
-      Object.keys(asks).forEach(function(price){
+      Object.keys(asks).forEach((price) => {
         let totalVol = 0
-        let roundedPx = +(Math.ceil(price*2000)/2000).toFixed(4)
-
+        let roundedPx = this.roundIncrement(price)
         Object.keys(asks[price].volumes).forEach((exchangeName) => {
           totalVol += asks[price].volumes[exchangeName]
         })
@@ -53,7 +50,6 @@ class OrderAreaChart extends Component {
     data.sort(function (a, b) {
       return a.price - b.price
     })
-    console.log(data2)
     //
     // const data1 = [
     //   {price: .03, bid: 4000, ask: 0},

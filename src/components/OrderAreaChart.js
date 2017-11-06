@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
+import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area, Legend } from 'recharts';
 
 class OrderAreaChart extends Component {
 
@@ -75,20 +75,21 @@ class OrderAreaChart extends Component {
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0.5}/>
+            <stop offset="5%" stopColor="#F4442E" stopOpacity={0.8}/>
+            <stop offset="95%" stopColor="#F4442E" stopOpacity={0.5}/>
           </linearGradient>
           <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-            <stop offset="95%" stopColor="#82ca9d" stopOpacity={.5}/>
+            <stop offset="5%" stopColor="#99F7AB" stopOpacity={0.8}/>
+            <stop offset="95%" stopColor="#99F7AB" stopOpacity={.5}/>
           </linearGradient>
         </defs>
         <XAxis dataKey="price" type="number" allowDataOverflow={true} domain={['dataMin', 'dataMax']} />
         <YAxis allowDataOverflow={true} />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Area type="monotone" dataKey="ask" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" connectNulls={true} />
-        <Area type="monotone" dataKey="bid" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" connectNulls={true} />
+        <Legend verticalAlign="top" height={36}/>
+        <Area type="monotone" dataKey="bid" stroke="#F4442E" fillOpacity={1} fill="url(#colorUv)" connectNulls={true} />
+        <Area type="monotone" dataKey="ask" stroke="#99F7AB" fillOpacity={1} fill="url(#colorPv)" connectNulls={true} />
       </AreaChart>
     )
   }

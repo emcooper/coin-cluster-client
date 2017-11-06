@@ -15,7 +15,7 @@ class MarketDropdown extends Component {
     return(
       <form >
       <label> Select Market: </label><br></br>
-      <select class="btn btn-primary btn-lg" onChange={this.handleChange} aria-label="select market dropdown">
+      <select class="btn btn-light btn-lg" onChange={this.handleChange} aria-label="select market dropdown">
         <option value="ETH">BTC-ETH</option>
         <option value="LTC">BTC-LTC</option>
         <option value="DOGE">BTC-DOGE</option>

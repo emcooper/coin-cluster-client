@@ -5,7 +5,7 @@ import MarketDropdown from './components/MarketDropdown'
 import OrderAreaChart from './components/OrderAreaChart'
 import './App.css'
 
-const endpoint = "http://127.0.0.1:8080"
+const endpoint = "https://coin-cluster-backend.herokuapp.com/"
 
 class App extends Component {
   constructor() {

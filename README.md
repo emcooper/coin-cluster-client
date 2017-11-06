@@ -194,7 +194,7 @@ available at [http://contributor-covenant.org/version/1/4][version]
 
 ## Authors
 
-* **Ellen Cooper** - *Initial work* - [emcooper](https://github.com/emcooper)
+* **Ellen Cooper** - [emcooper](https://github.com/emcooper)
 
 ## License
 

@@ -13,11 +13,14 @@ class MarketDropdown extends Component {
   render(){
 
     return(
-      <select class="btn btn-primary btn-lg" onChange={this.handleChange}>
+      <form >
+      <label> Select Market: </label><br></br>
+      <select class="btn btn-primary btn-lg" onChange={this.handleChange} aria-label="select market dropdown">
         <option value="ETH">BTC-ETH</option>
         <option value="LTC">BTC-LTC</option>
         <option value="DOGE">BTC-DOGE</option>
       </select>
+      </form>
     )
   }
 }

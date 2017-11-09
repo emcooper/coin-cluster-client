@@ -42,8 +42,11 @@ class App extends Component {
   render() {
     return (
       <div class="container-fluid text-center">
-        <h1>BTC-{this.state.market} Combined Order Books</h1><br></br>
-        <h5>{this.renderMarketDropdown()}</h5><br></br>
+      <br></br>
+        <h1><img class="bitcoin-logo"src="http://www.clipartlord.com/wp-content/uploads/2013/03/coins.png"/>Coin Cluster<img class="bitcoin-logo"src="http://www.clipartlord.com/wp-content/uploads/2013/03/coins.png"/></h1>
+        <h3>Cryptocurrency Order Book Aggregator</h3><br></br>
+        <h4 class="blue-text">BTC-{this.state.market} Market</h4><br></br>
+        <h5>{this.renderMarketDropdown()}</h5>
         <div class="col-md-10 offset-md-1 text-center" alt="chart">
           <OrderAreaChart orders={this.state.orders} market={this.state.market} />
         </div>

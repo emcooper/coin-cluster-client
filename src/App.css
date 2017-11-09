@@ -13,5 +13,26 @@ th.no-top-border {
 }
 
 .table td, .table th {
-  font-size: 12px;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Josefin Slab', serif;
+}
+
+h1 {
+  font-size: 50px
+}
+
+tr.bg-warning, h5.bg-warning {
+  background-color: #FFFC31!important
+}
+
+.blue-text {
+  color: #008BF8;
+  font-weight: 900
+}
+
+.bitcoin-logo {
+  height: 50px
 }
